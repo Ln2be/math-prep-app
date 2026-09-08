@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen – Règles mathématiques (sans fonctions)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f5f5;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .exam-page {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            padding: 38px 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            page-break-after: always;
+            break-after: page;
+        }
+        .exam-page:last-child {
+            margin-bottom: 0;
+            page-break-after: auto;
+            break-after: auto;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .subhead {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 28px;
+            color: #222;
+        }
+        .section-title {
+            font-weight: bold;
+            font-size: 20px;
+            margin: 25px 0 14px 0;
+            border-left: 6px solid #222;
+            padding-left: 12px;
+        }
+        .question-block {
+            margin-bottom: 22px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 16px;
+        }
+        .question-block:last-child {
+            border-bottom: none;
+        }
+        .q-number {
+            font-weight: bold;
+            font-size: 18px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .q-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .options {
+            list-style: none;
+            padding-left: 20px;
+            margin: 4px 0 0 0;
+        }
+        .options li {
+            font-size: 17px;
+            line-height: 1.7;
+            padding: 2px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .options li::before {
+            content: "○";
+            font-size: 20px;
+            margin-right: 10px;
+            color: #222;
+            display: inline-block;
+            width: 24px;
+            text-align: center;
+        }
+        .options li .letter {
+            font-weight: bold;
+            margin-right: 5px;
+            display: inline-block;
+            width: 18px;
+        }
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            background: #f9f9f9;
+            padding: 0 4px;
+            border-radius: 2px;
+        }
+        .footer-note {
+            margin-top: 30px;
+            border-top: 1px solid #aaa;
+            padding-top: 16px;
+            text-align: center;
+            font-size: 15px;
+            color: #333;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0.2in;
+            }
+            .exam-page {
+                box-shadow: none;
+                padding: 15px 20px;
+                border-radius: 0;
+                margin-bottom: 20px;
+                break-after: page;
+            }
+            .exam-page:last-child {
+                break-after: auto;
+            }
+            .question-block {
+                border-bottom: 1px dashed #888;
+            }
+            .options li::before {
+                content: "○";
+                color: black;
+            }
+            .math {
+                background: transparent;
+            }
+            .section-title {
+                border-left-color: black;
+            }
+            h1 {
+                border-bottom-color: black;
+            }
+        }
+        .exam-page {
+            direction: ltr;
+        }
+        .center-wrap {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- Page 1: Questions 1 to 14                                    -->
+<!-- ============================================================ -->
+<div class="exam-page" id="page1">
+    <h1>Examen – Règles mathématiques</h1>
+    <div class="subhead">
+        Concours d'entrée aux écoles de formation des enseignants – Durée : 2 heures
+        <div style="margin-top: 6px; font-size: 16px; font-weight: normal;">(Conversions, suites, équations, pourcentages, géométrie)</div>
+    </div>
+
+    <!-- Section: Conversions and units -->
+    <div class="section-title">Conversions et unités</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">1.</span> Laquelle des conversions suivantes est correcte ?</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 1 km = 1000 m</li>
+            <li><span class="letter">B.</span> 1 m = 1000 cm</li>
+            <li><span class="letter">C.</span> 1 kg = 100 g</li>
+            <li><span class="letter">D.</span> 1 heure = 100 minutes</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">2.</span> 27 kg + 33 dag + 0,13 t est égal (en hectogrammes) à :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 1573,3 hg</li>
+            <li><span class="letter">B.</span> 157,33 hg</li>
+            <li><span class="letter">C.</span> 15,733 hg</li>
+            <li><span class="letter">D.</span> 15733 hg</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">3.</span> Combien y a-t-il de décimètres dans 524 mètres ?</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 52,4 dm</li>
+            <li><span class="letter">B.</span> 524 dm</li>
+            <li><span class="letter">C.</span> 5 240 dm</li>
+            <li><span class="letter">D.</span> 52 400 dm</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">4.</span> 98 363 secondes correspondent à :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 1 jour 3 heures 19 minutes 23 secondes</li>
+            <li><span class="letter">B.</span> 1 jour 2 heures 19 minutes 23 secondes</li>
+            <li><span class="letter">C.</span> 2 jours 3 heures 19 minutes 23 secondes</li>
+            <li><span class="letter">D.</span> 1 jour 3 heures 20 minutes 23 secondes</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">5.</span> Un robinet remplit un récipient de 14 litres en 35 secondes. Combien de temps faut-il pour remplir un récipient de 20 litres ?</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 40 secondes</li>
+            <li><span class="letter">B.</span> 45 secondes</li>
+            <li><span class="letter">C.</span> 50 secondes</li>
+            <li><span class="letter">D.</span> 55 secondes</li>
+        </ul>
+    </div>
+
+    <!-- Section: Sequences -->
+    <div class="section-title">Suites numériques</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">6.</span> Si <span class="math">U₀ = 3</span> et <span class="math">Uₙ₊₁ = 2Uₙ + 5</span>, alors <span class="math">U₁</span> est égal à :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 8</li>
+            <li><span class="letter">B.</span> 11</li>
+            <li><span class="letter">C.</span> 13</li>
+            <li><span class="letter">D.</span> 16</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">7.</span> Pour la suite <span class="math">Vₙ = Uₙ + 5</span> où <span class="math">Uₙ₊₁ = 2Uₙ + 5</span>, la suite <span class="math">(Vₙ)</span> est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> Arithmétique de raison 2</li>
+            <li><span class="letter">B.</span> Géométrique de raison 2</li>
+            <li><span class="letter">C.</span> Arithmétique de raison 5</li>
+            <li><span class="letter">D.</span> Ni arithmétique ni géométrique</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">8.</span> Si <span class="math">V₀ = 8</span> et la raison de la suite géométrique <span class="math">(Vₙ)</span> est 2, alors le terme général <span class="math">Vₙ</span> est égal à :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> <span class="math">8 × n²</span></li>
+            <li><span class="letter">B.</span> <span class="math">8 × 2ⁿ</span></li>
+            <li><span class="letter">C.</span> <span class="math">8 + 2n</span></li>
+            <li><span class="letter">D.</span> <span class="math">8 × 2n</span></li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">9.</span> La somme <span class="math">S = Σₖ₌₀²⁰²³ 5ᵏ</span> est égale à :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> <span class="math">(5²⁰²⁴ − 1) / 4</span></li>
+            <li><span class="letter">B.</span> <span class="math">(5²⁰²³ − 1) / 4</span></li>
+            <li><span class="letter">C.</span> <span class="math">(5²⁰²⁴ + 1) / 4</span></li>
+            <li><span class="letter">D.</span> <span class="math">5²⁰²⁴</span></li>
+        </ul>
+    </div>
+
+    <!-- Section: Quadratic, logarithmic and exponential equations -->
+    <div class="section-title">Équations quadratiques, logarithmiques et exponentielles</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">10.</span> Les solutions de l'équation <span class="math">x² + 4x − 12 = 0</span> sont :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> <span class="math">x = 2</span> et <span class="math">x = −6</span></li>
+            <li><span class="letter">B.</span> <span class="math">x = −2</span> et <span class="math">x = 6</span></li>
+            <li><span class="letter">C.</span> <span class="math">x = 3</span> et <span class="math">x = −4</span></li>
+            <li><span class="letter">D.</span> <span class="math">x = −3</span> et <span class="math">x = 4</span></li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">11.</span> Les solutions de l'équation <span class="math">(ln x)² + 4 ln x − 12 = 0</span> sont :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> <span class="math">x = e²</span> et <span class="math">x = e⁶</span></li>
+            <li><span class="letter">B.</span> <span class="math">x = e²</span> et <span class="math">x = e⁻⁶</span></li>
+            <li><span class="letter">C.</span> <span class="math">x = e⁻²</span> et <span class="math">x = e⁶</span></li>
+            <li><span class="letter">D.</span> <span class="math">x = 2</span> et <span class="math">x = −6</span></li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">12.</span> La solution de l'équation <span class="math">e²ˣ + 4eˣ − 12 = 0</span> est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> <span class="math">x = ln 2</span></li>
+            <li><span class="letter">B.</span> <span class="math">x = ln 4</span></li>
+            <li><span class="letter">C.</span> <span class="math">x = ln(−6)</span></li>
+            <li><span class="letter">D.</span> Aucune solution</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">13.</span> Les solutions de l'équation <span class="math">x² − 2x − 8 = 0</span> sont :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> <span class="math">x = 2</span> et <span class="math">x = −4</span></li>
+            <li><span class="letter">B.</span> <span class="math">x = −2</span> et <span class="math">x = 4</span></li>
+            <li><span class="letter">C.</span> <span class="math">x = 4</span> et <span class="math">x = 2</span></li>
+            <li><span class="letter">D.</span> <span class="math">x = −4</span> et <span class="math">x = 2</span></li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">14.</span> La solution de l'équation <span class="math">ln(x+1) + ln(x−3) = ln 5</span> est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> <span class="math">x = −2</span></li>
+            <li><span class="letter">B.</span> <span class="math">x = 4</span></li>
+            <li><span class="letter">C.</span> <span class="math">x = 5</span></li>
+            <li><span class="letter">D.</span> Aucune solution</li>
+        </ul>
+    </div>
+
+    <div class="footer-note">
+        — Suite page suivante —
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Page 2: Questions 15 to 23                                  -->
+<!-- ============================================================ -->
+<div class="exam-page" id="page2">
+    <h1>Examen – Règles mathématiques (page 2)</h1>
+    <div class="subhead">Suite des questions – sans fonctions</div>
+
+    <!-- Section: Percentages and profits -->
+    <div class="section-title">Pourcentages et bénéfices</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">15.</span> Un commerçant réalise un bénéfice de 18 % sur le prix d'achat. Si le prix de vente augmente de 94 000 ouguiyas, son bénéfice serait de 20 %. Le prix d'achat est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 4 700 000 ouguiyas</li>
+            <li><span class="letter">B.</span> 470 000 ouguiyas</li>
+            <li><span class="letter">C.</span> 47 000 ouguiyas</li>
+            <li><span class="letter">D.</span> 470 ouguiyas</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">16.</span> Deux commerçants achètent 600 poulets à 110 ouguiyas l'unité, et paient 3 600 ouguiyas pour le transport et 2 400 pour l'alimentation. Le coût total est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 66 000 ouguiyas</li>
+            <li><span class="letter">B.</span> 72 000 ouguiyas</li>
+            <li><span class="letter">C.</span> 70 000 ouguiyas</li>
+            <li><span class="letter">D.</span> 65 000 ouguiyas</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">17.</span> Si 92 % des poulets sont vendus et que les commerçants réalisent un bénéfice de 13 560 ouguiyas, le prix de vente total est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 85 560 ouguiyas</li>
+            <li><span class="letter">B.</span> 80 000 ouguiyas</li>
+            <li><span class="letter">C.</span> 75 000 ouguiyas</li>
+            <li><span class="letter">D.</span> 90 000 ouguiyas</li>
+        </ul>
+    </div>
+
+    <!-- Section: Geometry and measurement -->
+    <div class="section-title">Géométrie et mesure</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">18.</span> Un champ rectangulaire a un périmètre de 50 cm sur une carte à l'échelle 1/500. Le périmètre réel est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 250 m</li>
+            <li><span class="letter">B.</span> 500 m</li>
+            <li><span class="letter">C.</span> 25 m</li>
+            <li><span class="letter">D.</span> 50 m</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">19.</span> L'aire d'un cercle de rayon 4 m (avec <span class="math">π = 3.14</span>) est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 50.24 m²</li>
+            <li><span class="letter">B.</span> 25.12 m²</li>
+            <li><span class="letter">C.</span> 12.56 m²</li>
+            <li><span class="letter">D.</span> 32 m²</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">20.</span> Un champ carré de côté 45 m est entouré d'une clôture fixée sur des poteaux espacés de 3 m. Le nombre de poteaux est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 60</li>
+            <li><span class="letter">B.</span> 58</li>
+            <li><span class="letter">C.</span> 62</li>
+            <li><span class="letter">D.</span> 56</li>
+        </ul>
+    </div>
+
+    <!-- Section: Speed and distance -->
+    <div class="section-title">Vitesse et distance</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">21.</span> Un bus part à 9h30 et arrive à 13h30. La durée du trajet est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 3 heures</li>
+            <li><span class="letter">B.</span> 4 heures</li>
+            <li><span class="letter">C.</span> 5 heures</li>
+            <li><span class="letter">D.</span> 3.5 heures</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">22.</span> La distance entre deux villes est de 280 km. Le bus consomme 18 L de carburant pour 100 km. La quantité de carburant consommée est :</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> 50.4 L</li>
+            <li><span class="letter">B.</span> 48 L</li>
+            <li><span class="letter">C.</span> 54 L</li>
+            <li><span class="letter">D.</span> 46 L</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">23.</span> Une voiture roule à 100 km/h et un bus à 60 km/h. Le bus est parti 2 heures avant. Au bout de combien de temps la voiture rattrape-t-elle le bus ?</div>
+        <ul class="options">
+            <li><span class="letter">A.</span> Après 2 heures</li>
+            <li><span class="letter">B.</span> Après 3 heures</li>
+            <li><span class="letter">C.</span> Après 4 heures</li>
+            <li><span class="letter">D.</span> Après 2.5 heures</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <div style="margin-top: 30px; border-top: 1px solid #aaa; padding-top: 16px; text-align: center; font-size: 15px; color: #333;">
+        — Fin de l'examen —
+        <br><span style="font-size: 14px;">Cet examen couvre : conversions, suites, équations quadratiques/logarithmiques/exponentielles, pourcentages, géométrie et vitesse.</span>
+    </div>
+</div>
+
+</body>
+</html>

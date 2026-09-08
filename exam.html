@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امتحان – قواعد الرياضيات (بدون دوال)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f5f5;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .exam-page {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            padding: 38px 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            page-break-after: always;
+            break-after: page;
+        }
+        .exam-page:last-child {
+            margin-bottom: 0;
+            page-break-after: auto;
+            break-after: auto;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .subhead {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 28px;
+            color: #222;
+        }
+        .section-title {
+            font-weight: bold;
+            font-size: 20px;
+            margin: 25px 0 14px 0;
+            border-right: 6px solid #222;
+            padding-right: 12px;
+        }
+        .question-block {
+            margin-bottom: 22px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 16px;
+        }
+        .question-block:last-child {
+            border-bottom: none;
+        }
+        .q-number {
+            font-weight: bold;
+            font-size: 18px;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        .q-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .options {
+            list-style: none;
+            padding-right: 20px;
+            margin: 4px 0 0 0;
+        }
+        .options li {
+            font-size: 17px;
+            line-height: 1.7;
+            padding: 2px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+        .options li::before {
+            content: "○";
+            font-size: 20px;
+            margin-left: 10px;
+            color: #222;
+            display: inline-block;
+            width: 24px;
+            text-align: center;
+        }
+        .options li .letter {
+            font-weight: bold;
+            margin-left: 5px;
+            display: inline-block;
+            width: 18px;
+        }
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            background: #f9f9f9;
+            padding: 0 4px;
+            border-radius: 2px;
+        }
+        .footer-note {
+            margin-top: 30px;
+            border-top: 1px solid #aaa;
+            padding-top: 16px;
+            text-align: center;
+            font-size: 15px;
+            color: #333;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0.2in;
+            }
+            .exam-page {
+                box-shadow: none;
+                padding: 15px 20px;
+                border-radius: 0;
+                margin-bottom: 20px;
+                break-after: page;
+            }
+            .exam-page:last-child {
+                break-after: auto;
+            }
+            .question-block {
+                border-bottom: 1px dashed #888;
+            }
+            .options li::before {
+                content: "○";
+                color: black;
+            }
+            .math {
+                background: transparent;
+            }
+            .section-title {
+                border-right-color: black;
+            }
+            h1 {
+                border-bottom-color: black;
+            }
+        }
+        @supports (font-family: 'Amiri', serif) {
+            body, .q-text, .options li {
+                font-family: 'Amiri', 'Times New Roman', Times, serif;
+            }
+        }
+        .exam-page {
+            direction: rtl;
+        }
+        .no-functions-note {
+            font-size: 16px;
+            color: #444;
+            text-align: center;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            background: #fafafa;
+        }
+        .center-wrap {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- الصفحة الأولى: الأسئلة 1 إلى 14                            -->
+<!-- ============================================================ -->
+<div class="exam-page" id="page1">
+    <h1>امتحان – قواعد الرياضيات</h1>
+    <div class="subhead">
+        مسابقة مدارس تكوين المعلمين – المدة: ساعتان
+        <div style="margin-top: 6px; font-size: 16px; font-weight: normal;">(التحويلات، المتتاليات، المعادلات، النسب، الهندسة)</div>
+    </div>
+
+    <!-- القسم: التحويلات والوحدات -->
+    <div class="section-title">التحويلات و الوحدات</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">1</span> أي من التحويلات التالية صحيح؟</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 1 كم = 1000 م</li>
+            <li><span class="letter">ب</span> 1 م = 1000 سم</li>
+            <li><span class="letter">ج</span> 1 كغ = 100 غ</li>
+            <li><span class="letter">د</span> 1 ساعة = 100 دقيقة</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">2</span> 27 كغ + 33 دكغ + 0.13 طن يساوي (بالهكتوغرام):</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 1573.3 هكغ</li>
+            <li><span class="letter">ب</span> 157.33 هكغ</li>
+            <li><span class="letter">ج</span> 15.733 هكغ</li>
+            <li><span class="letter">د</span> 15733 هكغ</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">3</span> كم ديسيمتراً في 524 متراً؟</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 52.4 دسم</li>
+            <li><span class="letter">ب</span> 524 دسم</li>
+            <li><span class="letter">ج</span> 5,240 دسم</li>
+            <li><span class="letter">د</span> 52,400 دسم</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">4</span> 98363 ثانية تساوي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 1 يوم 3 ساعات 19 دقيقة 23 ثانية</li>
+            <li><span class="letter">ب</span> 1 يوم 2 ساعات 19 دقيقة 23 ثانية</li>
+            <li><span class="letter">ج</span> 2 يوم 3 ساعات 19 دقيقة 23 ثانية</li>
+            <li><span class="letter">د</span> 1 يوم 3 ساعات 20 دقيقة 23 ثانية</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">5</span> حنفية تملأ وعاءً سعته 14 لتراً في 35 ثانية، كم تحتاج لملء وعاء سعته 20 لتراً؟</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 40 ثانية</li>
+            <li><span class="letter">ب</span> 45 ثانية</li>
+            <li><span class="letter">ج</span> 50 ثانية</li>
+            <li><span class="letter">د</span> 55 ثانية</li>
+        </ul>
+    </div>
+
+    <!-- القسم: المتتاليات -->
+    <div class="section-title">المتتاليات العددية</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">6</span> إذا كانت <span class="math">U₀ = 3</span> و <span class="math">Uₙ₊₁ = 2Uₙ + 5</span>، فإن <span class="math">U₁</span> تساوي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 8</li>
+            <li><span class="letter">ب</span> 11</li>
+            <li><span class="letter">ج</span> 13</li>
+            <li><span class="letter">د</span> 16</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">7</span> للمتتالية <span class="math">Vₙ = Uₙ + 5</span> حيث <span class="math">Uₙ₊₁ = 2Uₙ + 5</span>، المتتالية <span class="math">(Vₙ)</span> هي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> حسابية أساسها 2</li>
+            <li><span class="letter">ب</span> هندسية أساسها 2</li>
+            <li><span class="letter">ج</span> حسابية أساسها 5</li>
+            <li><span class="letter">د</span> ليست حسابية ولا هندسية</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">8</span> إذا كان <span class="math">V₀ = 8</span> وأساس المتتالية الهندسية <span class="math">(Vₙ)</span> هو 2، فإن الحد العام <span class="math">Vₙ</span> يساوي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> <span class="math">8 × n²</span></li>
+            <li><span class="letter">ب</span> <span class="math">8 × 2ⁿ</span></li>
+            <li><span class="letter">ج</span> <span class="math">8 + 2n</span></li>
+            <li><span class="letter">د</span> <span class="math">8 × 2n</span></li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">9</span> المجموع <span class="math">S = Σₖ₌₀²⁰²³ 5ᵏ</span> يساوي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> <span class="math">(5²⁰²⁴ − 1) / 4</span></li>
+            <li><span class="letter">ب</span> <span class="math">(5²⁰²³ − 1) / 4</span></li>
+            <li><span class="letter">ج</span> <span class="math">(5²⁰²⁴ + 1) / 4</span></li>
+            <li><span class="letter">د</span> <span class="math">5²⁰²⁴</span></li>
+        </ul>
+    </div>
+
+    <!-- القسم: المعادلات التربيعية واللوغاريتمية والأسية -->
+    <div class="section-title">المعادلات التربيعية، اللوغاريتمية و الأسية</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">10</span> حلول المعادلة <span class="math">x² + 4x − 12 = 0</span> هي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> <span class="math">x = 2</span> و <span class="math">x = −6</span></li>
+            <li><span class="letter">ب</span> <span class="math">x = −2</span> و <span class="math">x = 6</span></li>
+            <li><span class="letter">ج</span> <span class="math">x = 3</span> و <span class="math">x = −4</span></li>
+            <li><span class="letter">د</span> <span class="math">x = −3</span> و <span class="math">x = 4</span></li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">11</span> حلول المعادلة <span class="math">(ln x)² + 4 ln x − 12 = 0</span> هي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> <span class="math">x = e²</span> و <span class="math">x = e⁶</span></li>
+            <li><span class="letter">ب</span> <span class="math">x = e²</span> و <span class="math">x = e⁻⁶</span></li>
+            <li><span class="letter">ج</span> <span class="math">x = e⁻²</span> و <span class="math">x = e⁶</span></li>
+            <li><span class="letter">د</span> <span class="math">x = 2</span> و <span class="math">x = −6</span></li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">12</span> حل المعادلة <span class="math">e²ˣ + 4eˣ − 12 = 0</span> هو:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> <span class="math">x = ln 2</span></li>
+            <li><span class="letter">ب</span> <span class="math">x = ln 4</span></li>
+            <li><span class="letter">ج</span> <span class="math">x = ln(−6)</span></li>
+            <li><span class="letter">د</span> لا يوجد حل</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">13</span> حلول المعادلة <span class="math">x² − 2x − 8 = 0</span> هي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> <span class="math">x = 2</span> و <span class="math">x = −4</span></li>
+            <li><span class="letter">ب</span> <span class="math">x = −2</span> و <span class="math">x = 4</span></li>
+            <li><span class="letter">ج</span> <span class="math">x = 4</span> و <span class="math">x = 2</span></li>
+            <li><span class="letter">د</span> <span class="math">x = −4</span> و <span class="math">x = 2</span></li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">14</span> حل المعادلة <span class="math">ln(x+1) + ln(x−3) = ln 5</span> هو:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> <span class="math">x = −2</span></li>
+            <li><span class="letter">ب</span> <span class="math">x = 4</span></li>
+            <li><span class="letter">ج</span> <span class="math">x = 5</span></li>
+            <li><span class="letter">د</span> لا يوجد حل</li>
+        </ul>
+    </div>
+
+    <div class="footer-note">
+        —  يتبع في الصفحة التالية  —
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- الصفحة الثانية: الأسئلة 15 إلى 26                          -->
+<!-- ============================================================ -->
+<div class="exam-page" id="page2">
+
+
+    <!-- القسم: النسب المئوية و الأرباح -->
+    <div class="section-title">النسب المئوية و الأرباح</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">15</span> ربح تاجر 18% من ثمن الشراء، ولو زاد ثمن البيع 94000 أوقية لكان ربحه 20%. ثمن الشراء هو:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 4,700,000 أوقية</li>
+            <li><span class="letter">ب</span> 470,000 أوقية</li>
+            <li><span class="letter">ج</span> 47,000 أوقية</li>
+            <li><span class="letter">د</span> 470 أوقية</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">16</span> اشترى تاجران 600 دجاجة بـ 110 أوقية للواحدة، ودفعا 3600 أوقية للنقل و 2400 للتغذية. التكلفة الإجمالية هي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 66,000 أوقية</li>
+            <li><span class="letter">ب</span> 72,000 أوقية</li>
+            <li><span class="letter">ج</span> 70,000 أوقية</li>
+            <li><span class="letter">د</span> 65,000 أوقية</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">17</span> إذا بيع 92% من الدجاج وحقق التاجران ربحاً قدره 13,560 أوقية، فإن ثمن البيع الكلي هو:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 85,560 أوقية</li>
+            <li><span class="letter">ب</span> 80,000 أوقية</li>
+            <li><span class="letter">ج</span> 75,000 أوقية</li>
+            <li><span class="letter">د</span> 90,000 أوقية</li>
+        </ul>
+    </div>
+
+    <!-- القسم: الهندسة والقياس -->
+    <div class="section-title">الهندسة و القياس</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">18</span> حقل مستطيل على خريطة مقياسها 1/500 محيطه 50 سم، المحيط الحقيقي هو:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 250 م</li>
+            <li><span class="letter">ب</span> 500 م</li>
+            <li><span class="letter">ج</span> 25 م</li>
+            <li><span class="letter">د</span> 50 م</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">19</span> مساحة دائرة نصف قطرها 4 م (باستعمال <span class="math">π = 3.14</span>) هي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 50.24 م²</li>
+            <li><span class="letter">ب</span> 25.12 م²</li>
+            <li><span class="letter">ج</span> 12.56 م²</li>
+            <li><span class="letter">د</span> 32 م²</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">20</span> حقل مربع الشكل طول ضلعه 45 م، أحاط بسياج مثبت على أعمدة كل 3 م. عدد الأعمدة هو:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 60</li>
+            <li><span class="letter">ب</span> 58</li>
+            <li><span class="letter">ج</span> 62</li>
+            <li><span class="letter">د</span> 56</li>
+        </ul>
+    </div>
+
+    <!-- القسم: السرعة والمسافة -->
+    <div class="section-title">السرعة و المسافة</div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">21</span> حافلة انطلقت الساعة 9:30 صباحاً ووصلت الساعة 1:30 بعد الظهر. مدة الرحلة هي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 3 ساعات</li>
+            <li><span class="letter">ب</span> 4 ساعات</li>
+            <li><span class="letter">ج</span> 5 ساعات</li>
+            <li><span class="letter">د</span> 3.5 ساعات</li>
+    </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">22</span> المسافة بين مدينتين 280 كم، تستهلك الحافلة 18 لتر لكل 100 كم. كمية الوقود المستهلكة هي:</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> 50.4 لتر</li>
+            <li><span class="letter">ب</span> 48 لتر</li>
+            <li><span class="letter">ج</span> 54 لتر</li>
+            <li><span class="letter">د</span> 46 لتر</li>
+        </ul>
+    </div>
+
+    <div class="question-block">
+        <div class="q-text"><span class="q-number">23</span> سيارة سرعتها 100 كم/ساعة وحافلة سرعتها 60 كم/ساعة، انطلقت الحافلة قبلها بساعتين. متى تلحق السيارة بالحافلة؟</div>
+        <ul class="options">
+            <li><span class="letter">أ</span> بعد ساعتين</li>
+            <li><span class="letter">ب</span> بعد 3 ساعات</li>
+            <li><span class="letter">ج</span> بعد 4 ساعات</li>
+            <li><span class="letter">د</span> بعد 2.5 ساعة</li>
+        </ul>
+    </div>
+
+    <!-- خاتمة -->
+    <div style="margin-top: 30px; border-top: 1px solid #aaa; padding-top: 16px; text-align: center; font-size: 15px; color: #333;">
+        —  انتهت الأسئلة —
+        <br><span style="font-size: 14px;">ملاحظة: هذا الامتحان يغطي التحويلات، المتتاليات، المعادلات التربيعية واللوغاريتمية والأسية، النسب المئوية، الهندسة، والسرعة.</span>
+    </div>
+</div>
+
+</body>
+</html>
