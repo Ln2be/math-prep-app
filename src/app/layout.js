@@ -41,7 +41,8 @@ function AppGuard({ children }) {
 export default function RootLayout({ children }) {
   // Register Service Worker for PWA
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
+    // Only register service worker in production
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
       navigator.serviceWorker.register('/sw.js').catch(console.error);
     }
   }, []);
