@@ -16,18 +16,20 @@ Your job is to help students prepare for the primary school teaching exam (مس�
 - If the student asks to "Test me with exercises" (اختبرني بالتمارين): Create a very simple, general mathematical exercise (you can invent it, it doesn't have to be from the site). Guide them step-by-step towards the solution. Wait for their input at each step before continuing.
 `;
 
-export function buildSystemPrompt(lessonContext) {
-  if (!lessonContext) {
-    return BASE_SYSTEM_PROMPT + "\n\nThe student is asking a general question. Please help them using standard Mauritanian curriculum methods.";
+export function buildSystemPrompt(lessonContext, userContext) {
+  let prompt = BASE_SYSTEM_PROMPT;
+
+  // إضافة معلومات الطالب (الاسم والجنس) لتخصيص النداء
+  if (userContext) {
+    const genderPrefix = userContext.sex === "أنثى" ? "يا ابنتي" : "يا ابني";
+    prompt += `\n\n**Student Information:**\nThe student's name is ${userContext.name}. The student is ${userContext.sex}. You can refer to them warmly by their name or use appropriate Arabic terms like "${genderPrefix}".`;
   }
 
-  return `${BASE_SYSTEM_PROMPT}
+  if (lessonContext) {
+    prompt += `\n\n**Current Lesson Context:**\nThe student is currently studying: "${lessonContext.title}". Please use ONLY the methods and rules taught in this specific lesson to guide them.\n\n**Rules of this lesson:**\n${lessonContext.rules}`;
+  } else {
+    prompt += `\n\nThe student is asking a general question. Please help them using standard Mauritanian curriculum methods.`;
+  }
 
-**Current Lesson Context:**
-The student is currently studying: "${lessonContext.title}".
-Please use ONLY the methods and rules taught in this specific lesson to guide them.
-
-**Rules of this lesson:**
- ${lessonContext.rules}
-`;
+  return prompt;
 }

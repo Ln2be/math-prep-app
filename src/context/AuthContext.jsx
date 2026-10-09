@@ -30,8 +30,14 @@ export function AuthProvider({ children }) {
     });
 
     const fetchProfile = async (userId) => {
-      const { data } = await supabase.from('profiles').select('is_premium').eq('id', userId).single();
-      setIsPremium(data?.is_premium || false);
+      const { data } = await supabase.from('profiles').select('premium_until').eq('id', userId).single();
+      // التحقق مما إذا كان الاشتراك لا يزال ساري المفعول
+      if (data?.premium_until) {
+        const isStillPremium = new Date(data.premium_until) > new Date();
+        setIsPremium(isStillPremium);
+      } else {
+        setIsPremium(false);
+      }
     };
 
     return () => {

@@ -21,7 +21,7 @@ export default function UpgradePage() {
     }
   }, [user]);
 
-  const userInfo = `الاسم: ${profile?.full_name || "غير معروف"}\nاسم المستخدم: ${profile?.username || "غير معروف"}\nالبريد الإلكتروني: ${user?.email || "غير معروف"}`;
+    const userInfo = `الاسم: ${profile?.full_name || "غير معروف"}\nاسم المستخدم: ${profile?.username || "غير معروف"}\nالبريد الإلكتروني: ${user?.email || "غير معروف"}\nرقم الطالب (ID): ${user?.id || "غير معروف"}`;
   const whatsappMessage = encodeURIComponent(`مرحباً، أريد الترقية إلى العضوية الذهبية في تطبيق تحضير مسابقة المعلمين.\n\nمعلوماتي:\n${userInfo}`);
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -80,6 +80,7 @@ export default function UpgradePage() {
             <p className="text-gray-600">👤 الاسم: {profile?.full_name || "غير معروف"}</p>
             <p className="text-gray-600">🔗 المستخدم: @{profile?.username || "غير معروف"}</p>
             <p className="text-gray-600">✉️ البريد: {user?.email || "غير معروف"}</p>
+            <p className="text-gray-600 text-xs mt-1 break-all">🆔 رقم الطالب: {user?.id || "غير معروف"}</p>
           </div>
         </div>
 
