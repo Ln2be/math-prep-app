@@ -5,13 +5,13 @@ const ProgressContext = createContext();
 
 export function ProgressProvider({ children }) {
   const [unlockedLevel, setUnlockedLevel] = useState(1);
+  const [solvedExercises, setSolvedExercises] = useState(0);
 
   useEffect(() => {
-    // Load progress from local storage when the app starts
     const savedLevel = localStorage.getItem("unlockedLevel");
-    if (savedLevel) {
-      setUnlockedLevel(parseInt(savedLevel));
-    }
+    const savedExercises = localStorage.getItem("solvedExercises");
+    if (savedLevel) setUnlockedLevel(parseInt(savedLevel));
+    if (savedExercises) setSolvedExercises(parseInt(savedExercises));
   }, []);
 
   const unlockNextLevel = (currentLevel) => {
@@ -22,8 +22,16 @@ export function ProgressProvider({ children }) {
     }
   };
 
+  const addSolvedExercise = () => {
+    setSolvedExercises((prev) => {
+      const next = prev + 1;
+      localStorage.setItem("solvedExercises", next.toString());
+      return next;
+    });
+  };
+
   return (
-    <ProgressContext.Provider value={{ unlockedLevel, unlockNextLevel }}>
+    <ProgressContext.Provider value={{ unlockedLevel, unlockNextLevel, solvedExercises, addSolvedExercise }}>
       {children}
     </ProgressContext.Provider>
   );

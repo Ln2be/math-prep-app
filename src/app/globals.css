@@ -24,3 +24,91 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Lesson Content Styling */
+.lesson-content {
+  color: #374151; /* Darker, readable text */
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.lesson-content h2 {
+  font-size: 1.25rem; /* Smaller titles */
+  font-weight: 800;
+  color: #2563eb; /* Blue */
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  padding-right: 0.5rem;
+  border-right: 4px solid #f97316; /* Orange accent */
+}
+
+.lesson-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b; /* Dark slate */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lesson-content p {
+  margin-bottom: 0.75rem;
+  color: #374151;
+}
+
+.lesson-content ul, .lesson-content ol {
+  padding-right: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.lesson-content li {
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.lesson-content strong {
+  color: #1e293b;
+}
+
+.lesson-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  table-layout: fixed; /* Prevents stretching off-screen */
+}
+
+.lesson-content th, .lesson-content td {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.lesson-content th {
+  background-color: #eff6ff; /* Light blue background */
+  color: #1e40af; /* Dark blue text */
+  font-weight: bold;
+}
+
+.formula-box {
+  background-color: #eff6ff;
+  border-right: 4px solid #2563eb;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 10px 0;
+  color: #1e40af;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* إجبار معادلات LaTeX على الظهور من اليسار لليمين */
+.katex {
+  direction: ltr !important;
+  text-align: left;
+}
+
+.katex-display {
+  direction: ltr !important;
+  text-align: center; /* لتوسيط المعادلات الكبيرة في سطر مستقل */
+}

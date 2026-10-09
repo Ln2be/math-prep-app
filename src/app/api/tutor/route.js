@@ -1,41 +1,61 @@
-import OpenAI from "openai";
+import axios from "axios";
+import http from "http";
+import https from "https";
+import { buildSystemPrompt } from "@/lib/prompts";
+
+// Force IPv4 to avoid ENETUNREACH / ETIMEDOUT errors on Linux
+const httpAgent = new http.Agent({ family: 4 });
+const httpsAgent = new https.Agent({ family: 4 });
+
+const CURRENT_MODEL = process.env.AI_MODEL || "openai/gpt-4o-mini";
 
 export async function POST(req) {
   try {
-    const { question } = await req.json();
+    const { chatHistory, lessonContext, question } = await req.json();
+    
+    const systemPrompt = buildSystemPrompt(lessonContext);
 
-    // We initialize the OpenAI client, but point it to DeepSeek's or GLM's servers
-    const client = new OpenAI({
-      // USE ONE OF THE FOLLOWING BASE URLs:
-      baseURL: "https://api.deepseek.com", // For DeepSeek
-      // baseURL: "https://open.bigmodel.cn/api/paas/v4", // For GLM (uncomment if using GLM)
-      
-      apiKey: process.env.AI_API_KEY,
-    });
+    let messagesArray = [
+      { role: "system", content: systemPrompt }
+    ];
 
-    const completion = await client.chat.completions.create({
-      // USE ONE OF THE FOLLOWING MODELS:
-      model: "deepseek-chat", // For DeepSeek
-      // model: "glm-4-flash", // For GLM (uncomment if using GLM - it's free!)
-      
-      messages: [
-        {
-          role: "system",
-          content: "You are an expert Mauritanian primary school math teacher. Your job is to help students prepare for the teaching exam. The student will ask you a question or provide a wrong answer. Explain the concept clearly in Arabic. Do NOT give the final direct answer. Guide them step-by-step using the Mauritanian curriculum methods (e.g., using the 7-column table for conversions, Delta for quadratic equations). Keep answers concise and encouraging."
-        },
-        {
-          role: "user",
-          content: question
-        }
-      ],
+    if (chatHistory && chatHistory.length > 0) {
+      const formattedHistory = chatHistory.map(m => ({
+        role: m.role === "ai" ? "assistant" : "user",
+        content: m.content
+      }));
+      messagesArray = [...messagesArray, ...formattedHistory];
+    } else if (question) {
+      messagesArray.push({ role: "user", content: question });
+    }
+
+    console.log("Using AI Model:", CURRENT_MODEL);
+
+    const response = await axios.post("https://openrouter.ai/api/v1/chat/completions", {
+      model: CURRENT_MODEL, 
+      messages: messagesArray,
       temperature: 0.7,
+      stream: false
+    }, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.AI_API_KEY}`,
+        "HTTP-Referer": "http://localhost:3000", 
+        "X-Title": "Math Prep App"
+      },
+      httpAgent,   // Force IPv4
+      httpsAgent,  // Force IPv4
+      timeout: 30000
     });
 
-    const text = completion.choices[0].message.content;
+    const text = response.data.choices[0].message.content;
 
     return Response.json({ reply: text });
   } catch (error) {
-    console.error(error);
-    return Response.json({ error: "Failed to get response from AI" }, { status: 500 });
+    console.error("Server Error:", error.message);
+    if (error.code === 'ECONNABORTED' || error.code === 'ENETUNREACH' || error.code === 'ETIMEDOUT') {
+      return Response.json({ error: "Network connection issue. Please try again." }, { status: 504 });
+    }
+    return Response.json({ error: error.message || "Failed to get response from AI" }, { status: 500 });
   }
 }

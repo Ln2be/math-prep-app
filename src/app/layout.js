@@ -4,7 +4,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { ProgressProvider } from "@/context/ProgressContext";
 import { AuthProvider, useAuth } from "@/context/AuthContext";
 import BottomNav from "@/components/BottomNav";
+import 'katex/dist/katex.min.css'; // Make sure this is here!
 import "./globals.css";
+
+// ... rest of your layout code (AppGuard and RootLayout) ...
 
 function AppGuard({ children }) {
   const { session, loading } = useAuth();
@@ -12,9 +15,9 @@ function AppGuard({ children }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    // If finished loading, no session, AND NOT already on the auth page -> redirect
+    // Only redirect if we are SURE there is no session and we aren't on the auth page
     if (!loading && !session && pathname !== "/auth") {
-      router.push("/auth");
+      router.replace("/auth");
     }
   }, [session, loading, pathname, router]);
 
