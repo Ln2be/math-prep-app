@@ -3,8 +3,8 @@ const CACHE_NAME = 'math-prep-cache-v1';
 const urlsToCache = [
   '/',
   '/manifest.webmanifest',
-  '/icon-192.svg',
-  '/icon-512.svg'
+  '/icon-192.png',
+  '/icon-512.png'
 ];
  
 self.addEventListener('install', (event) => {
