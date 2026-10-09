@@ -13,7 +13,6 @@ function AppGuard({ children }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Only redirect if NOT logged in AND NOT on /auth AND NOT on /admin
     if (!loading && !session && pathname !== "/auth" && pathname !== "/admin") {
       router.replace("/auth");
     }
@@ -27,7 +26,6 @@ function AppGuard({ children }) {
     );
   }
 
-  // If user is not logged in, only show the auth page or admin page
   if (!session && pathname !== "/auth" && pathname !== "/admin") {
     return null;
   }
@@ -35,15 +33,28 @@ function AppGuard({ children }) {
   return (
     <>
       {children}
-      {/* Only show Bottom Nav if logged in AND not on /admin or /auth */}
       {session && pathname !== "/admin" && pathname !== "/auth" && <BottomNav />} 
     </>
   );
 }
 
 export default function RootLayout({ children }) {
+  // Register Service Worker for PWA
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(console.error);
+    }
+  }, []);
+
   return (
     <html lang="ar" dir="rtl">
+      <head>
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
+      </head>
       <body className="bg-gray-100">
         <AuthProvider>
           <ProgressProvider>
